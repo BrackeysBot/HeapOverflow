@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using BrackeysBot.API.Plugins;
 
-namespace BrackeysBot.PluginTemplate;
+namespace HeapOverflow;
 
 /// <summary>
-///     Represents a class which implements an example plugin.
+///     Represents a class which implements the HeapOverflow plugin.
 /// </summary>
-[Plugin("TestPlugin")]
-[PluginDescription("An empty template plugin to demonstrate the usage of the BrackeysBot API.")]
-public sealed class TestPlugin : MonoPlugin
+[Plugin("HeapOverflow")]
+[PluginDescription("A BrackeysBot plugin for organising the help section.")]
+public sealed class HeapOverflowPlugin : MonoPlugin
 {
     /// <inheritdoc />
     protected override Task OnLoad()

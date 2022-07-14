@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrackeysBot.PluginTemplate", "BrackeysBot.PluginTemplate\BrackeysBot.PluginTemplate.csproj", "{370A9F63-8280-47E6-AE43-75DEBDB25265}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeapOverflow", "HeapOverflow\HeapOverflow.csproj", "{370A9F63-8280-47E6-AE43-75DEBDB25265}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
