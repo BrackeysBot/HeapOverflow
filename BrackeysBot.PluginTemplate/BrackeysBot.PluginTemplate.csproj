@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <Version>0.0.1</Version>
+        <FileVersion>0.0.1</FileVersion>
+        <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BrackeysBot.API" Version="4.0.0-nightly.38"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="config.json"/>
+        <EmbeddedResource Include="config.json"/>
+    </ItemGroup>
+
+</Project>
