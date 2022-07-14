@@ -3,14 +3,29 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <Version>0.0.1</Version>
-        <FileVersion>0.0.1</FileVersion>
-        <AssemblyVersion>0.0.1.0</AssemblyVersion>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <RepositoryUrl>https://github.com/BrackeysBot/HeapOverflow</RepositoryUrl>
     </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="BrackeysBot.API" Version="4.0.0-nightly.38"/>
-    </ItemGroup>
+    <PropertyGroup Condition="'$(VersionSuffix)' != '' And '$(BuildNumber)' == ''">
+        <Version>$(VersionPrefix)-$(VersionSuffix)</Version>
+        <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
+        <FileVersion>$(VersionPrefix).0</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(VersionSuffix)' != '' And '$(BuildNumber)' != ''">
+        <Version>$(VersionPrefix)-$(VersionSuffix).$(BuildNumber)</Version>
+        <AssemblyVersion>$(VersionPrefix).$(BuildNumber)</AssemblyVersion>
+        <FileVersion>$(VersionPrefix).$(BuildNumber)</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(VersionSuffix)' == ''">
+        <Version>$(VersionPrefix)</Version>
+        <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
+        <FileVersion>$(VersionPrefix).0</FileVersion>
+    </PropertyGroup>
 
     <ItemGroup>
         <None Remove="config.json"/>
