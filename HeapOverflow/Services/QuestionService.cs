@@ -134,13 +134,13 @@ internal sealed class QuestionService : BackgroundService
         await using var context = scope.ServiceProvider.GetRequiredService<HeapOverflowContext>();
         EntityEntry<Question> entry = await context.Questions.AddAsync(question).ConfigureAwait(false);
         await context.SaveChangesAsync().ConfigureAwait(false);
-        
+
         question = entry.Entity;
         _activeQuestions.Add(question);
 
         await thread.AddThreadMemberAsync(member).ConfigureAwait(false);
         await thread.ModifyAsync(model => model.Locked = true).ConfigureAwait(false);
-        
+
         DiscordColor primaryColor = DiscordColor.Purple;
         DiscordColor secondaryColor = DiscordColor.Yellow;
 
@@ -157,11 +157,11 @@ internal sealed class QuestionService : BackgroundService
         embed.WithFooter(category.Name);
         embed.WithColor(primaryColor);
         await thread.SendMessageAsync(embed).ConfigureAwait(false);
-        
+
         var builder = new DiscordMessageBuilder();
         builder.WithContent($"{MentionUtility.MentionUser(member.Id)}, to improve your chances of getting help, " +
                             "please keep these tips in mind.");
-        
+
         embed = new DiscordEmbedBuilder();
         embed.WithTitle("Format code!");
         string codeBlock = Formatter.BlockCode("Console.WriteLine(\"Hello World\");", "cs");
@@ -173,7 +173,7 @@ internal sealed class QuestionService : BackgroundService
                               codeBlock);
         embed.WithColor(secondaryColor);
         builder.AddEmbed(embed);
-        
+
         embed = new DiscordEmbedBuilder();
         embed.WithTitle("Use a paste service!");
         embed.WithDescription("To send lengthy code, consider uploading it to " +
@@ -181,7 +181,7 @@ internal sealed class QuestionService : BackgroundService
                               " and then sending the link to this thread.");
         embed.WithColor(secondaryColor);
         builder.AddEmbed(embed);
-        
+
         embed = new DiscordEmbedBuilder();
         embed.WithTitle("Be patient!");
         embed.WithDescription("If you don't receive immediate help, it may mean that your question is poorly written, and so " +
