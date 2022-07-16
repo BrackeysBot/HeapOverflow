@@ -36,6 +36,27 @@
     <ItemGroup>
         <None Remove="config.json" />
         <EmbeddedResource Include="config.json" />
+        <EmbeddedResource Update="EmbedMessages.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>EmbedMessages.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="ExceptionMessages.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="EmbedMessages.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>EmbedMessages.resx</DependentUpon>
+        </Compile>
+        <Compile Update="ExceptionMessages.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>ExceptionMessages.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
