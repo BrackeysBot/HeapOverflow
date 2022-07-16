@@ -1,8 +1,11 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BrackeysBot.API.Extensions;
 using BrackeysBot.API.Plugins;
 using BrackeysBot.Core.API;
 using DSharpPlus;
+using DSharpPlus.EventArgs;
+using DSharpPlus.SlashCommands;
+using HeapOverflow.Commands;
 using HeapOverflow.Data;
 using HeapOverflow.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,14 +37,17 @@ public sealed class HeapOverflowPlugin : MonoPlugin
     /// <inheritdoc />
     protected override Task OnLoad()
     {
-        Logger.Info("Hello World!");
+        DiscordClient.GuildAvailable += OnGuildAvailable;
         return base.OnLoad();
     }
 
-    /// <inheritdoc />
-    protected override Task OnUnload()
+    private Task OnGuildAvailable(DiscordClient sender, GuildCreateEventArgs e)
     {
-        Logger.Info("Goodbye world!");
-        return base.OnUnload();
+        Logger.Info("Registering commands");
+        SlashCommandsExtension slashCommands = sender.GetSlashCommands();
+        slashCommands.RegisterCommands<AskHereCommand>(e.Guild.Id);
+        slashCommands.RegisterCommands<HelpSectionCommand>(e.Guild.Id);
+        slashCommands.RegisterCommands<QuestionCommand>(e.Guild.Id);
+        return slashCommands.RefreshCommands();
     }
 }
