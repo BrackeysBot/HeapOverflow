@@ -26,6 +26,7 @@ public sealed class HeapOverflowPlugin : MonoPlugin
         services.AddHostedSingleton<CachedMessageService>();
         services.AddHostedSingleton<QuestionService>();
         services.AddHostedSingleton<QuestionCategoryService>();
+        services.AddHostedSingleton<QuestionSubmissionService>();
 
         services.AddDbContext<HeapOverflowContext>();
     }
